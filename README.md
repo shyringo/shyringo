@@ -32,8 +32,9 @@ documented prompt-lookup workload.
 
 Run **Qwen3.8-27B** locally on one laptop CPU with a native C engine, direct
 GGUF loading, an **8 GB RAM** tested path and measured generation up to **2.52
-token/s**. Runtime speedups preserve byte-identical full logits against the
-native baseline for the same GGUF.
+token/s**. Chat in the terminal or connect local apps through its resident
+OpenAI-compatible API. Runtime speedups preserve byte-identical full logits
+against the native baseline for the same GGUF.
 
 <p align="center">
   <a href="https://github.com/shyringo/qwen3.8-27b-in-c">
