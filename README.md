@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://shyringo.github.io/"><strong>Open the Laptop LLM Finder</strong></a>
+  <a href="https://shyringo.github.io/shyringo/"><strong>Open the Laptop LLM Finder</strong></a>
 </p>
 
 ## Featured projects
