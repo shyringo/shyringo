@@ -17,6 +17,48 @@
   <meta name="twitter:title" content="Which large model fits your laptop?">
   <meta name="twitter:description" content="Native C Qwen3.8-27B and DeepSeek-V4-Flash-0731 on one laptop CPU.">
   <meta name="twitter:image" content="https://shyringo.github.io/shyringo/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Laptop LLM Finder",
+        "url": "https://shyringo.github.io/shyringo/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Linux, macOS, Windows with WSL2",
+        "isAccessibleForFree": true,
+        "description": "Check verified RAM, disk and operating-system paths for native C Qwen3.8-27B and DeepSeek-V4-Flash-0731 laptop CPU inference.",
+        "author": {"@type": "Person", "name": "shyringo", "url": "https://github.com/shyringo"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can an 8 GB laptop run Qwen3.8-27B or DeepSeek-V4-Flash-0731?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Both projects have completed real inference under an 8 GB minimum tested path. Qwen uses a 6.27 GiB IQ1_M GGUF; DeepSeek streams cold experts from the native checkpoint on SSD. More memory can improve quality or caching."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does the 8 GB path preserve the original model precision?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Qwen IQ1_M is a lossy quantization of the original checkpoint, while the runtime speedups add no further approximation for the same GGUF. DeepSeek reads the released native FP8/FP4 checkpoint without weight conversion."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why does DeepSeek need about 172 GB of disk but only 8 GB of RAM?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The complete 284B-A13B checkpoint remains on disk. The engine keeps a bounded cache in RAM and streams cold MoE expert weights from SSD as they are routed."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can these native C inference engines run on Windows?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes, through WSL2. Linux and macOS provide the required POSIX interfaces directly."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       --paper: #f5f7f6;
@@ -130,6 +172,12 @@
     figure { margin: 0; min-width: 0; }
     figure img { display: block; width: 100%; height: auto; border: 1px solid #273036; border-radius: 6px; }
     figcaption { margin-top: 9px; color: var(--muted); font-size: 13px; }
+    .faq { margin-top: 48px; max-width: 920px; }
+    .faq h2 { font-size: 28px; }
+    details { border-top: 1px solid var(--line); padding: 15px 0; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 760; font-size: 17px; line-height: 1.4; }
+    details p { margin: 10px 0 0; color: var(--muted); line-height: 1.6; }
     footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
     @media (max-width: 820px) {
       main { padding-top: 30px; }
@@ -229,6 +277,26 @@
           <figcaption>DeepSeek-V4-Flash-0731, pure C, laptop CPU.</figcaption>
         </figure>
       </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions before downloading / 下载前常见问题</h2>
+      <details>
+        <summary>Can an 8 GB laptop run these models? / 8 GB 笔记本真的能运行吗？</summary>
+        <p>Both projects completed real inference under an 8 GB minimum tested path. Qwen uses a 6.27 GiB IQ1_M GGUF; DeepSeek streams cold experts from the native checkpoint on SSD. More memory can improve quality or caching.</p>
+      </details>
+      <details>
+        <summary>Does the 8 GB path preserve original model precision? / 低内存方案会损失精度吗？</summary>
+        <p>Qwen IQ1_M is a lossy quantization of the original checkpoint, while its runtime speedups add no further approximation for the same GGUF. DeepSeek reads the released native FP8/FP4 checkpoint without weight conversion.</p>
+      </details>
+      <details>
+        <summary>Why does DeepSeek need 172 GB disk but only 8 GB RAM? / 为什么磁盘很大、内存却可以很小？</summary>
+        <p>The complete 284B-A13B checkpoint stays on disk. The engine keeps a bounded RAM cache and streams cold MoE expert weights from SSD only when routing needs them.</p>
+      </details>
+      <details>
+        <summary>Can I run this on Windows? / Windows 可以运行吗？</summary>
+        <p>Yes, through WSL2. Linux and macOS provide the required POSIX interfaces directly.</p>
+      </details>
     </section>
   </main>
 

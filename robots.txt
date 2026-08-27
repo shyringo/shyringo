@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shyringo.github.io/shyringo/sitemap.xml
