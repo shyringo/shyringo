@@ -9,6 +9,10 @@
   Native C · CPU inference · low-memory runtimes · reproducible performance
 </p>
 
+<p align="center">
+  <a href="https://shyringo.github.io/"><strong>Open the Laptop LLM Finder</strong></a>
+</p>
+
 ## Featured projects
 
 ### [DeepSeek-V4-Flash-0731 in C](https://github.com/shyringo/deepseek-v4-flash-0731-in-c)
