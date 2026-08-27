@@ -1,0 +1,37 @@
+name: Notify site update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - robots.txt
+      - sitemap.xml
+      - 95036e765b7f473eae4b19b67092e71f.txt
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Submit updated page
+        env:
+          PAGE_URL: https://shyringo.github.io/shyringo/
+          INDEXNOW_KEY: 95036e765b7f473eae4b19b67092e71f
+          KEY_LOCATION: https://shyringo.github.io/shyringo/95036e765b7f473eae4b19b67092e71f.txt
+        run: |
+          code=$(curl --silent --show-error --output response.txt \
+            --write-out '%{http_code}' --get https://api.indexnow.org/indexnow \
+            --data-urlencode "url=${PAGE_URL}" \
+            --data-urlencode "key=${INDEXNOW_KEY}" \
+            --data-urlencode "keyLocation=${KEY_LOCATION}")
+          if [ "$code" != 200 ] && [ "$code" != 202 ]; then
+            cat response.txt
+            echo "IndexNow returned HTTP $code" >&2
+            exit 1
+          fi
+          echo "IndexNow accepted the update with HTTP $code"
