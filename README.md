@@ -20,7 +20,8 @@
 Run the native **284B-A13B DeepSeek-V4-Flash-0731** checkpoint on one laptop
 CPU. The pure C engine streams cold MoE experts from disk, has a tested **8 GB
 RAM** path, needs no GPU or Python, and reaches **1.12 token/s** in its best
-documented prompt-lookup workload.
+documented prompt-lookup workload. It supports terminal chat and a resident
+local OpenAI-compatible API with live token streaming.
 
 <p align="center">
   <a href="https://github.com/shyringo/deepseek-v4-flash-0731-in-c">
