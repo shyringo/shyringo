@@ -1,12 +1,12 @@
 <h1 align="center">shyringo</h1>
 
 <p align="center">
-  <strong>Building local AI systems that bring large open models to laptop CPUs.</strong><br>
-  专注于让大模型在普通笔记本 CPU 上真正可用。
+  <strong>On AI.</strong><br>
+  关注 AI，也动手做 AI —— 训练、推理、评测，以及开源生态。
 </p>
 
 <p align="center">
-  Native C · CPU inference · low-memory runtimes · reproducible performance
+  LLM training · inference engines · model evaluation · open-source AI
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@ and matched tool-result replay.
 
 <p align="center">
   <a href="https://github.com/shyringo/deepseek-v4-flash-0731-in-c">
-    <img src="https://raw.githubusercontent.com/shyringo/deepseek-v4-flash-0731-in-c/main/docs/assets/terminal-demo.png" alt="DeepSeek-V4-Flash-0731 running through the native C engine on a laptop CPU">
+    <img src="https://repository-images.githubusercontent.com/1336167566/9659b555-d233-44e5-b3f4-5a90670c3e3f" alt="DeepSeek-V4-Flash-0731 in C — native inference on a laptop CPU">
   </a>
 </p>
 
@@ -41,14 +41,17 @@ against the native baseline for the same GGUF.
 
 <p align="center">
   <a href="https://github.com/shyringo/qwen3.8-27b-in-c">
-    <img src="https://raw.githubusercontent.com/shyringo/qwen3.8-27b-in-c/main/docs/assets/terminal-demo.png" alt="Qwen3.8-27B running through the native C engine on a laptop CPU">
+    <img src="https://repository-images.githubusercontent.com/1345107493/adcd759d-84c1-463d-affe-7e4aab08c9a7" alt="Qwen3.8-27B in C — native inference on a laptop CPU">
   </a>
 </p>
 
-## Engineering focus
+## What I work on
 
-- Native inference engines instead of wrappers around external runtimes
-- Low-bit CPU kernels, bounded memory planning and storage-aware execution
-- Reproducible TTFT, TPOT, memory and correctness evidence
-- User paths that go from clone to a real conversation without a GPU
-
+- **Training**: RL-scaling post-training frameworks for LLMs, plus training
+  experiments that fit on a laptop CPU — with benchmark evidence
+- **Inference**: native engines (pure C) that bring large open models to
+  ordinary hardware, with reproducible performance and correctness evidence
+- **Evaluation**: probing what models truly believe — profiling the ideology
+  of any foundation model
+- **Open-source AI**: curating and maintaining resources across LLM inference,
+  local AI, small language models, Chinese LLMs and AI developer tools
