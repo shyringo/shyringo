@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laptop LLM Finder - Qwen3.8 and DeepSeek CPU inference</title>
-  <meta name="description" content="Check whether your laptop can run Qwen3.8-27B or DeepSeek-V4-Flash-0731 locally on one CPU, then open the exact native C Quick Start.">
+  <title>Laptop LLM Finder - Qwen3.8-Flash-Next, Qwen3.8 and DeepSeek</title>
+  <meta name="description" content="Check whether your laptop can run Qwen3.8-Flash-Next, Qwen3.8-27B or DeepSeek-V4-Flash-0731 locally on one CPU, then open the exact native C Quick Start.">
   <link rel="canonical" href="https://shyringo.github.io/shyringo/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Which large model fits your laptop?">
-  <meta property="og:description" content="Check verified native C CPU paths for Qwen3.8-27B and DeepSeek-V4-Flash-0731.">
+  <meta property="og:description" content="Check native C laptop CPU paths for Qwen3.8-Flash-Next, Qwen3.8-27B and DeepSeek-V4-Flash-0731.">
   <meta property="og:url" content="https://shyringo.github.io/shyringo/">
   <meta property="og:image" content="https://shyringo.github.io/shyringo/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Which large model fits your laptop?">
-  <meta name="twitter:description" content="Native C Qwen3.8-27B and DeepSeek-V4-Flash-0731 on one laptop CPU.">
+  <meta name="twitter:description" content="Native C Qwen3.8-Flash-Next, Qwen3.8-27B and DeepSeek-V4-Flash-0731 on one laptop CPU.">
   <meta name="twitter:image" content="https://shyringo.github.io/shyringo/og.png">
   <script type="application/ld+json">
   {
@@ -28,7 +28,7 @@
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Linux, macOS, Windows with WSL2",
         "isAccessibleForFree": true,
-        "description": "Check verified RAM, disk and operating-system paths for native C Qwen3.8-27B and DeepSeek-V4-Flash-0731 laptop CPU inference.",
+        "description": "Check RAM, disk and operating-system paths for native C Qwen3.8-Flash-Next, Qwen3.8-27B and DeepSeek-V4-Flash-0731 laptop CPU inference.",
         "author": {"@type": "Person", "name": "shyringo", "url": "https://github.com/shyringo"}
       },
       {
@@ -36,8 +36,8 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Can an 8 GB laptop run Qwen3.8-27B or DeepSeek-V4-Flash-0731?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Both projects have completed real inference under an 8 GB minimum tested path. Qwen uses a 6.27 GiB IQ1_M GGUF; DeepSeek streams cold experts from the native checkpoint on SSD. More memory can improve quality or caching."}
+            "name": "Which models can an 8 GB laptop run?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Qwen3.8-27B and DeepSeek-V4-Flash-0731 have completed real inference under an 8 GB minimum tested path. Qwen3.8-Flash-Next has a 12 GB practical minimum and uses a 67.56 GiB split GGUF."}
           },
           {
             "@type": "Question",
@@ -146,7 +146,7 @@
     }
     .summary.warn { border-left-color: var(--yellow); background: var(--yellow-soft); }
     .summary.stop { border-left-color: var(--coral); background: var(--coral-soft); }
-    .models { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .models { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     .model {
       min-width: 0; padding: 22px; border: 1px solid var(--line);
       border-radius: 7px; background: var(--surface);
@@ -207,7 +207,7 @@
   <main class="shell">
     <section class="intro">
       <h1>Which large model fits your laptop?</h1>
-      <p class="lede">Check the verified RAM, disk and operating-system paths for native C Qwen3.8-27B and DeepSeek-V4-Flash-0731 CPU inference.</p>
+      <p class="lede">Check the RAM, disk and operating-system paths for native C Qwen3.8-Flash-Next, Qwen3.8-27B and DeepSeek-V4-Flash-0731 CPU inference.</p>
     </section>
 
     <section class="checker" aria-labelledby="checker-title">
@@ -241,6 +241,18 @@
       <div id="summary" class="summary" role="status" aria-live="polite"></div>
 
       <div class="models">
+        <article class="model" id="flash-card">
+          <div class="model-head"><h2>Qwen3.8-Flash-Next</h2><span id="flash-status" class="status">Checking</span></div>
+          <ul class="facts">
+            <li><strong>Practical minimum:</strong> 12 GB RAM, about 75 GB free disk</li>
+            <li><strong>Model:</strong> best under 200B, 125B-A6B main model + 51B PLE</li>
+            <li><strong>Reference speed:</strong> 5.03 token/s resident chat; 9.89 positions/s exact batch</li>
+            <li><strong>Use it:</strong> terminal chat or resident OpenAI-compatible API with function tools</li>
+            <li><strong>Runtime:</strong> native C, direct split GGUF, no GPU or Python</li>
+          </ul>
+          <div class="actions"><a class="repo-link" href="https://github.com/shyringo/qwen3.8-flash-next-in-c">Open Flash-Next Quick Start</a></div>
+        </article>
+
         <article class="model" id="qwen-card">
           <div class="model-head"><h2>Qwen3.8-27B</h2><span id="qwen-status" class="status">Checking</span></div>
           <ul class="facts">
@@ -284,8 +296,8 @@
     <section class="faq" aria-labelledby="faq-title">
       <h2 id="faq-title">Questions before downloading / 下载前常见问题</h2>
       <details>
-        <summary>Can an 8 GB laptop run these models? / 8 GB 笔记本真的能运行吗？</summary>
-        <p>Both projects completed real inference under an 8 GB minimum tested path. Qwen uses a 6.27 GiB IQ1_M GGUF; DeepSeek streams cold experts from the native checkpoint on SSD. More memory can improve quality or caching.</p>
+        <summary>Which models can an 8 GB laptop run? / 8 GB 笔记本能运行哪些模型？</summary>
+        <p>Qwen3.8-27B and DeepSeek-V4-Flash-0731 completed real inference under an 8 GB minimum tested path. Qwen3.8-Flash-Next has a 12 GB practical minimum and uses a 67.56 GiB split GGUF.</p>
       </details>
       <details>
         <summary>Does the 8 GB path preserve original model precision? / 低内存方案会损失精度吗？</summary>
@@ -310,6 +322,7 @@
     const wsl = document.getElementById('wsl');
     const wslField = document.getElementById('wsl-field');
     const summary = document.getElementById('summary');
+    const flashStatus = document.getElementById('flash-status');
     const qwenStatus = document.getElementById('qwen-status');
     const deepseekStatus = document.getElementById('deepseek-status');
 
@@ -334,10 +347,12 @@
       const osReady = os.value !== 'windows' || wsl.checked;
       const qwenLow = osReady && ram >= 8 && disk >= 10;
       const qwenHigh = osReady && ram >= 20 && disk >= 17;
+      const flash = osReady && ram >= 12 && disk >= 75;
       const deepseek = osReady && ram >= 8 && disk >= 172;
 
       wslField.hidden = os.value !== 'windows';
       if (!osReady) {
+        status(flashStatus, 'Needs WSL2', 'blocked');
         status(qwenStatus, 'Needs WSL2', 'blocked');
         status(deepseekStatus, 'Needs WSL2', 'blocked');
         summary.className = 'summary stop';
@@ -345,10 +360,17 @@
         return;
       }
 
+      status(flashStatus, flash ? 'Ready' : 'Not ready', flash ? 'ready' : 'blocked');
       status(qwenStatus, qwenHigh ? 'Q4 ready' : qwenLow ? 'IQ1 ready' : 'Not ready', qwenLow ? 'ready' : 'blocked');
       status(deepseekStatus, deepseek ? 'Ready' : 'Not ready', deepseek ? 'ready' : 'blocked');
 
-      if (qwenLow && deepseek) {
+      if (flash && deepseek) {
+        summary.className = 'summary';
+        summary.innerHTML = '<strong>All three engines meet their documented paths.</strong> Start with Qwen3.8-Flash-Next for the best model under 200B and the fastest measured native C chat.';
+      } else if (flash) {
+        summary.className = 'summary';
+        summary.innerHTML = '<strong>Qwen3.8-Flash-Next is ready.</strong> Start here for the best model under 200B, native C laptop CPU inference and the fastest measured chat of the three projects.';
+      } else if (qwenLow && deepseek) {
         summary.className = 'summary';
         summary.innerHTML = '<strong>Both engines meet their minimum tested paths.</strong> Start with Qwen for the smaller download and faster chat; use DeepSeek when you specifically need the native 284B-A13B model.';
       } else if (qwenLow) {
