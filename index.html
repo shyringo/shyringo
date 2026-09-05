@@ -37,7 +37,7 @@
           {
             "@type": "Question",
             "name": "Which models can an 8 GB laptop run?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Qwen3.8-27B and DeepSeek-V4-Flash-0731 have completed real inference under an 8 GB minimum tested path. Qwen3.8-Flash-Next has a 12 GB practical minimum and uses a 67.56 GiB split GGUF."}
+            "acceptedAnswer": {"@type": "Answer", "text": "All three engines have an 8 GB path. Qwen3.8-Flash-Next automatically uses bounded-memory weight streaming; 12 GB or more uses its faster default path."}
           },
           {
             "@type": "Question",
@@ -244,7 +244,7 @@
         <article class="model" id="flash-card">
           <div class="model-head"><h2>Qwen3.8-Flash-Next</h2><span id="flash-status" class="status">Checking</span></div>
           <ul class="facts">
-            <li><strong>Practical minimum:</strong> 12 GB RAM, about 75 GB free disk</li>
+            <li><strong>Minimum path:</strong> 8 GB RAM, about 75 GB free disk; selected automatically</li>
             <li><strong>Model:</strong> best under 200B, 125B-A6B main model + 51B PLE</li>
             <li><strong>Reference speed:</strong> 5.03 token/s resident chat; 9.89 positions/s exact batch</li>
             <li><strong>Use it:</strong> terminal chat or resident OpenAI-compatible API with function tools</li>
@@ -297,7 +297,7 @@
       <h2 id="faq-title">Questions before downloading / 下载前常见问题</h2>
       <details>
         <summary>Which models can an 8 GB laptop run? / 8 GB 笔记本能运行哪些模型？</summary>
-        <p>Qwen3.8-27B and DeepSeek-V4-Flash-0731 completed real inference under an 8 GB minimum tested path. Qwen3.8-Flash-Next has a 12 GB practical minimum and uses a 67.56 GiB split GGUF.</p>
+        <p>All three engines have an 8 GB path. Qwen3.8-Flash-Next automatically uses bounded-memory weight streaming; 12 GB or more uses its faster default path.</p>
       </details>
       <details>
         <summary>Does the 8 GB path preserve original model precision? / 低内存方案会损失精度吗？</summary>
@@ -347,7 +347,7 @@
       const osReady = os.value !== 'windows' || wsl.checked;
       const qwenLow = osReady && ram >= 8 && disk >= 10;
       const qwenHigh = osReady && ram >= 20 && disk >= 17;
-      const flash = osReady && ram >= 12 && disk >= 75;
+      const flash = osReady && ram >= 8 && disk >= 75;
       const deepseek = osReady && ram >= 8 && disk >= 172;
 
       wslField.hidden = os.value !== 'windows';
