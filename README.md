@@ -15,6 +15,15 @@
 
 ## Featured projects
 
+### [Qwen3.8-Flash-Next in C](https://github.com/shyringo/qwen3.8-flash-next-in-c)
+
+Run the **best model under 200B** on a single laptop CPU with a purpose-built
+native C inference engine. The practical minimum is **12 GB RAM**; no GPU,
+Python, PyTorch, model conversion or external inference runtime is required.
+Measured performance reaches **9.89 positions/s** for exact batch-4 verification
+and **5.03 token/s** in resident single-conversation chat. Runtime optimizations
+add no approximation beyond the selected quantized GGUF.
+
 ### [DeepSeek-V4-Flash-0731 in C](https://github.com/shyringo/deepseek-v4-flash-0731-in-c)
 
 Run the native **284B-A13B DeepSeek-V4-Flash-0731** checkpoint on one laptop
